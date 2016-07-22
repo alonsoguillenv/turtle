@@ -23,7 +23,7 @@ void Game::run()
     int games_number = 0;
     int maximum = -1;
     int winner = -1;
-    while( maximum_turtles < game_level )
+    while( maximum_turtles != game_level )
     {
         current_player = 0;
         while( !finished )
@@ -65,11 +65,12 @@ void Game::run()
         }
         if( maximum_turtles !=  game_level - 1)
         {
-            std::cout << "\nPresione una tecla para continuar con la siguiente ronda!  " << std::endl;
+            std::cout << "\nFin del juego!";
+
         }
         else
         {
-            std::cout << "\nFin del juego!";
+            std::cout << "\nPresione una tecla para continuar con la siguiente ronda!  " << std::endl;
         }
         for( int i = 0; i < number_of_players; i += 1 )
         {
