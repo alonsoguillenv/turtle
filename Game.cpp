@@ -33,11 +33,11 @@ void Game::run()
                 int play = players[current_player].take_turn();
                 if( play >= players[current_player].player_turtle.get_size()  )
                 {
-                    players[current_player].won_games += 1;
+
                     finished = true;
 
                 }
-                players[current_player].draw_turtle( current_player );
+                //players[current_player].draw_turtle( current_player );
 
             }
             rows += 1;
@@ -61,16 +61,21 @@ void Game::run()
         std::cout << "\nStatus del juego: ";
         for( int i = 0; i < number_of_players; i += 1 )
         {
-            std::cout << "\n" << players[i].get_name() << " ha completado " << players[i].won_games << " tortugas.";
+            std::cout << "\n" << players[i].get_name() << " ha completado " << players[i].get_wins() << " tortugas.";
         }
-        if( maximum_turtles !=  game_level - 1)
+        for( int i = 0; i < number_of_players; i += 1 )
         {
-            std::cout << "\nFin del juego!";
+            int player_t = players[i].get_time();
+            std::cout << "\n" << players[i].get_name() << " ha jugado " << player_t << " veces.";
+        }
+        if( maximum_turtles <  game_level - 1)
+        {
+            std::cout << "\nPresione una tecla para continuar con la siguiente ronda!  " << std::endl;
 
         }
         else
         {
-            std::cout << "\nPresione una tecla para continuar con la siguiente ronda!  " << std::endl;
+            std::cout << "Fin del juego" << std::endl;
         }
         for( int i = 0; i < number_of_players; i += 1 )
         {
