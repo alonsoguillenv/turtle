@@ -23,7 +23,7 @@ void Game::run()
     int games_number = 0;
     int maximum = -1;
     int winner = -1;
-    while( maximum_turtles != game_level )
+    while( maximum_turtles < game_level )
     {
         current_player = 0;
         while( !finished )
@@ -75,7 +75,7 @@ void Game::run()
         }
         else
         {
-            std::cout << "Fin del juego" << std::endl;
+            std::cout << "\n\nFin del juego" << std::endl;
         }
         for( int i = 0; i < number_of_players; i += 1 )
         {
@@ -94,7 +94,7 @@ void Game::save_game()
 {
 
     std::cout << "\nJuego guardado ";
-
+    delete [] players;
     return;
 }
 
