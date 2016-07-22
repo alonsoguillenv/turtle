@@ -37,55 +37,55 @@ void Game::run()
                     finished = true;
 
                 }
-                //players[current_player].draw_turtle( current_player );
-
             }
             rows += 1;
         }
-        save_game();
+
 
 
 
         for( int i = 0; i < number_of_players; i += 1 )
         {
-            if( players[i].won_games > maximum )
+            if( players[i].get_wins()> maximum )
             {
-                maximum = players[i].won_games;
+                maximum = players[i].get_wins();
                 winner = i;
             }
         }
         finished = false;
-        maximum_turtles = maximum;
-        fflush(stdin);
         std::cout << std::endl;
+        maximum_turtles = maximum;
+        //fflush(stdin);
         std::cout << "\nStatus del juego: ";
         for( int i = 0; i < number_of_players; i += 1 )
         {
-            std::cout << "\n" << players[i].get_name() << " ha completado " << players[i].get_wins() << " tortugas.";
+            int wins = players[i].get_wins();
+            std::cout << "\n" << players[i].get_name() << " ha completado " << wins << " tortugas.";
         }
         for( int i = 0; i < number_of_players; i += 1 )
         {
             int player_t = players[i].get_time();
-            std::cout << "\n" << players[i].get_name() << " ha jugado " << player_t << " veces.";
+            std::cout << "\n" << players[i].get_name() << " ha jugado " << player_t << " veces en total.";
         }
-        if( maximum_turtles <  game_level - 1)
+        if( maximum_turtles <  game_level)
         {
             std::cout << "\nPresione una tecla para continuar con la siguiente ronda!  " << std::endl;
 
         }
         else
         {
-            std::cout << "\n\nFin del juego" << std::endl;
+            std::cout << "\n\nFin del juego. Presione Enter para terminar. " << std::endl;
         }
         for( int i = 0; i < number_of_players; i += 1 )
         {
             players[i].player_turtle.index = 0;
 
         }
+        save_game();
         getchar();
     }
 
-
+    delete [] players;
 }
 
 
@@ -94,7 +94,7 @@ void Game::save_game()
 {
 
     std::cout << "\nJuego guardado ";
-    delete [] players;
+    //delete [] players;
     return;
 }
 

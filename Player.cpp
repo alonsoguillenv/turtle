@@ -6,6 +6,7 @@
 
 Player::Player():player_turtle(), player_turns(0), won_games(0), player_time(0)
 {
+    won_games = 0;
 }
 
 int Player::take_turn()
@@ -18,6 +19,7 @@ int Player::take_turn()
         fflush(stdin);
         std::cout << "\nEs el turno de " << name << ". Presione Enter para lanzar el dado." << std::endl;
         getchar();
+        //std::cout << "\n----" << name << " ha ganado " << this->won_games << " juegos ----" ;
         int value = 0;
         value = 1 + rand()%6;
         std::cout << "\n" << name << " obtuvo " << value <<" con el dado";
